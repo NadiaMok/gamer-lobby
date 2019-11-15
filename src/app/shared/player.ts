@@ -1,8 +1,10 @@
 export class Player {
-    _id: String;
-    player: String;
-    rank: Number;
-    score: Number;
-    time: String;
-    gamesPlayed: Array<String>;
- }
+    // tslint:disable-next-line:variable-name
+    _id: string;
+    player: string;
+    rank: number;
+    score: number;
+    time: string;
+    status: boolean;
+    gamesPlayed: Array<string>;
+}

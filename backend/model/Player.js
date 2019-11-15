@@ -14,6 +14,9 @@ let Player = new Schema({
     time: {
         type: String //change to time format
     },
+    status: {
+        type: Boolean
+    },
     gamesPlayed: {
         type: Array
     }

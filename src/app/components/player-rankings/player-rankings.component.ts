@@ -13,7 +13,7 @@ export class PlayerRankingsComponent implements OnInit {
   PlayerData: any = [];
   dataSource: MatTableDataSource<Player>;
   @ViewChild(MatPaginator, {static:true}) paginator: MatPaginator;
-  displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'gamesPlayed'];
+  displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'status', 'gamesPlayed'];
 
   constructor(private playerApi: ApiService) {
     this.playerApi.GetPlayers().subscribe(data => {
