@@ -10,14 +10,14 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class ApiService {
 
-  endpoint: 'http://localhost:4000/api';
+  endpoint = 'http://localhost:4000/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
 
   // Add player
   AddPlayer(data: Player): Observable<any> {
-    let API_URL = `${this.endpoint}/add-player`;
+    const API_URL = `${this.endpoint}/add-player`;
     return this.http.post(API_URL, data)
       .pipe(
         catchError(this.errorMgmt)
@@ -31,7 +31,7 @@ export class ApiService {
 
   // Get player
   GetPlayer(id): Observable<any> {
-    let API_URL = `${this.endpoint}/read-player/${id}`;
+    const API_URL = `${this.endpoint}/read-player/${id}`;
     return this.http.get(API_URL, { headers: this.headers }).pipe(
       map((res: Response) => {
         return res || {};
@@ -42,7 +42,7 @@ export class ApiService {
 
   // Update player
   UpdatePlayer(id, data: Player): Observable<any> {
-    let API_URL = `${this.endpoint}/update/${id}`;
+    const API_URL = `${this.endpoint}/update/${id}`;
     return this.http.put(API_URL, data, { headers: this.headers }).pipe(
       catchError(this.errorMgmt)
     );
@@ -50,7 +50,7 @@ export class ApiService {
 
   // Delete player
   DeletePlayer(id): Observable<any> {
-    let API_URL = `${this.endpoint}/delete-player/${id}`;
+    const API_URL = `${this.endpoint}/delete-player/${id}`;
     return this.http.delete(API_URL).pipe(
       catchError(this.errorMgmt)
     );

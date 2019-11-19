@@ -8,25 +8,25 @@
 
 <mat-sidenav-container>
 <!-- Sidenav -->
-  <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
+  <!-- <mat-sidenav #sidenav [mode]="isBiggerScreen() ? 'over' : 'side'" [(opened)]="opened" [fixedInViewport]="true"
     [fixedTopGap]>
     <mat-nav-list>
       <a mat-list-item routerLinkActive="active" routerLink="/player-rankings">
         <mat-icon>format_list_bulleted</mat-icon> View Players
       </a>
     </mat-nav-list>
-  </mat-sidenav>
+  </mat-sidenav> -->
   <!-- Main content -->
   <mat-sidenav-content>
     <a mat-raised-button class='mat-raised-button mat-button-base mat-primary'
       routerLinkActive="active" routerLink='/login'>Login</a>
     <nav mat-tab-nav-bar>
-        <a mat-tab-link *ngFor="let link of navLinks" routerLink='link.link'
+        <a mat-tab-link *ngFor="let link of navLinks" [routerLink]='link.link'
           routerLinkActive #rla="routerLinkActive" active="rla.isActive">
           {{link.label}}
         </a>
-    </nav>
+    </nav> 
     <router-outlet></router-outlet>
-  </mat-sidenav-content>-->
+  </mat-sidenav-content>
 </mat-sidenav-container> 
 

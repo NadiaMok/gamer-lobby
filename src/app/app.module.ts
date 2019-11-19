@@ -11,13 +11,15 @@ import { PlayerRankingsComponent } from './components/player-rankings/player-ran
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './material.module';
 import { LoginComponent } from './components/login/login.component';
+import { ListPlayerComponent } from './components/list-player/list-player.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PlayerRankingsComponent,
-    LoginComponent
+    LoginComponent,
+    ListPlayerComponent
   ],
   imports: [
     BrowserModule,
