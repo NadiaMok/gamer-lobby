@@ -10,12 +10,14 @@ import { AppComponent } from './app.component';
 import { PlayerRankingsComponent } from './components/player-rankings/player-rankings.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AngularMaterialModule } from './material.module';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    PlayerRankingsComponent
+    PlayerRankingsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

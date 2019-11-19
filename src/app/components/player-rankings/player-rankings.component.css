@@ -1,0 +1,17 @@
+table {
+    width: 100%;
+}
+  
+.mat-form-field {
+/* font-size: large; */
+    width: 30%;
+    margin: 0 auto;
+}
+
+table, ng-container, th {
+    font-size: large;
+}
+table{
+    width: 80%;
+    margin: 0 auto;
+}
