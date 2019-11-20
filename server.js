@@ -3,7 +3,7 @@ let express = require('express'),
   mongoose = require('mongoose'),
   cors = require('cors'),
   bodyParser = require('body-parser'),
-  /*dataBaseConfig = require('/backend/database/db');
+  /*dataBaseConfig = require('backend/database/db');
 
 
 // Connecting mongoDB
@@ -18,7 +18,7 @@ mongoose.connect(dataBaseConfig.db, {
   }
 )*/
 // Create a database variable outside of the database connection callback to reuse the connection pool in your app.
-var db;
+const db;
 
 // Connect to the database before starting the application server.
 mongodb.MongoClient.connect(process.env.MONGODB_URI || "mongodb://admin:admin@cluster0-shard-00-00-1dir7.mongodb.net:27017,cluster0-shard-00-01-1dir7.mongodb.net:27017,cluster0-shard-00-02-1dir7.mongodb.net:27017/test?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority", function (err, client) {
