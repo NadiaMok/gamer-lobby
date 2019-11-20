@@ -5,6 +5,7 @@ let express = require('express'),
   bodyParser = require('body-parser'),
   dataBaseConfig = require('./database/db');
 
+
 // Connecting mongoDB
 mongoose.Promise = global.Promise;
 mongoose.connect(dataBaseConfig.db, {
@@ -20,6 +21,11 @@ mongoose.connect(dataBaseConfig.db, {
 // Set up express js port
 const playerRoute = require('../backend/routes/player.route')
 const app = express();
+
+//
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
