@@ -22,6 +22,10 @@ mongoose.connect(dataBaseConfig.db, {
 const playerRoute = require('../backend/routes/player.route')
 const app = express();
 
+// Create link to Angular build directory
+var distDir = __dirname + "/dist/";
+app.use(express.static(distDir));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
