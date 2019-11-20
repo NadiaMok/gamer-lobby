@@ -22,10 +22,6 @@ mongoose.connect(dataBaseConfig.db, {
 const playerRoute = require('../backend/routes/player.route')
 const app = express();
 
-// Create link to Angular build directory
-var distDir = __dirname + "/dist/";
-app.use(express.static(distDir));
-
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: false
@@ -36,7 +32,7 @@ app.use('/', express.static(path.join(__dirname, 'dist/gamer-lobby')));
 app.use('/api', playerRoute)
 
 // Create port
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 8080;
 const server = app.listen(port, () => {
   console.log('Connected to port ' + port)
 })
