@@ -16,6 +16,6 @@ Page appearances:
 -generate remaning components
 -validation for admin pages - authentication
 -add images
--heroku
++heroku
 -populate db
 -game array (backend)
