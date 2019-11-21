@@ -4,7 +4,7 @@ import { PlayerRankingsComponent } from './components/player-rankings/player-ran
 import { LoginComponent } from './components/login/login.component';
 
 const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: 'player-rankings' },
+  { path: '/', pathMatch: 'full', redirectTo: 'player-rankings' },
   { path: 'player-rankings', component: PlayerRankingsComponent },
   { path: 'login', component: LoginComponent }
 ];
