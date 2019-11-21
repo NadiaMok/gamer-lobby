@@ -12,11 +12,10 @@ Page appearances:
 -edit player page
 -games listing page
 -page not found
--admin listing after validation
 
 -generate remaning components
 -validation for admin pages - authentication
 -add images
 +heroku
 -populate db
--**game array (backend) make class with array and export, import, check if matches when adding
+-game array (backend)

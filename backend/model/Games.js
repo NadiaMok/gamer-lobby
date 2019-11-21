@@ -1,2 +1,0 @@
-// array of games, export
-
