@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {MatDialog} from '@angular/material';
 import { Router, Routes, RouterModule } from '@angular/router';
 
 @Component({
@@ -39,7 +38,8 @@ export class LoginComponent implements OnInit {
   // validation
   login(): void {
     if (this.username === 'admin' && this.password === 'admin') {
-      this.router.navigateByUrl('/list-player');
+     // this.router.navigateByUrl('/list-player');
+     this.router.navigate(['/list-player']);
     } else {
       alert('Invalid credentials!');
     }
