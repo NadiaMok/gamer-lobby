@@ -1,3 +1,10 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of navLinks" [routerLink]='link.link'
+      routerLinkActive #rla="routerLinkActive" active="rla.isActive">
+      {{link.label}}
+    </a>
+</nav> 
+
 <mat-card class="example-card">
 	<mat-card-header>
 	  <mat-card-title>Login</mat-card-title>

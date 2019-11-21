@@ -11,12 +11,15 @@ import { Router } from '@angular/router';
 })
 
 export class PlayerRankingsComponent implements OnInit {
+  navLinks: any[];
+  activeLinkIndex = -1;
+
   PlayerData: any = [];
   dataSource: MatTableDataSource<Player>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'status', 'gamesPlayed'];
 
-  constructor(private playerApi: ApiService) {
+  constructor(private playerApi: ApiService, private router: Router) {
     this.playerApi.GetPlayers().subscribe(data => {
       this.PlayerData = data;
       this.dataSource = new MatTableDataSource<Player>(this.PlayerData);
@@ -24,13 +27,30 @@ export class PlayerRankingsComponent implements OnInit {
         this.dataSource.paginator = this.paginator;
       }, 0);
     });
+    this.navLinks = [
+      {
+        label: 'Player Rankings',
+        link: '/player-rankings',
+        index: 0
+      }, {
+        label: 'Admin',
+        link: '/login',
+        index: 1
+      }
+      ];
+
   }
 
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    // tabs
+    this.router.events.subscribe((res) => {
+      this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
+    });
+   }
 
   deletePlayer(index: number, e) {
     if (window.confirm('Are you sure you want to delete this player?')) {
