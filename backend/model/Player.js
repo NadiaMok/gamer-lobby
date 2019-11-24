@@ -12,7 +12,7 @@ let Player = new Schema({
         type: Number
     },
     time: {
-        type: String //change to time format
+        type: String 
     },
     status: {
         type: Boolean

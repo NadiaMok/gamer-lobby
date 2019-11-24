@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { GAMES } from '../../../../backend/model/Games.js';
 
 @Component({
   selector: 'app-join-game',
@@ -8,13 +7,23 @@ import { GAMES } from '../../../../backend/model/Games.js';
 })
 export class JoinGameComponent implements OnInit {
 
-  GAMES: any;
-  selected = 'option2';
-
-  constructor() { }
+  game = ' --- ';
+  GAMES: Array<string>;
 
   ngOnInit() {
-    console.log(GAMES);
+    this.GAMES = [
+      'Bioshock',
+      'Amnesia: The Dark Descent',
+      'Tomb Raider',
+      'Fallout NV',
+      'Fallout 4',
+      'Portal',
+      'Portal 2',
+      'Super Mario',
+      'Grand Theft Auto V',
+      'Dead Space',
+      'Tetris'
+    ];
+    // console.log(this.GAMES);
   }
-
 }

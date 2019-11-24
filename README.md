@@ -5,7 +5,7 @@ To do:
 
 Page appearances:
 -player ranking page
--join game page
+-join game page - PRIORITY
 -admin login page
 -player listing page 
 -add player page
@@ -16,6 +16,5 @@ Page appearances:
 -generate remaning components
 -validation for admin pages - authentication
 -add images
-+heroku
 -populate db
--game array (backend)
+-clean up code
