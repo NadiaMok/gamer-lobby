@@ -11,9 +11,9 @@ const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'player-rankings' },
   { path: 'player-rankings', component: PlayerRankingsComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'join-game', component: JoinGameComponent },
+  { path: 'join-game/:id', component: JoinGameComponent },
   { path: 'add-player', component: AddPlayerComponent },
-  { path: 'edit-player' , component: EditPlayerComponent},
+  { path: 'edit-player/:id' , component: EditPlayerComponent},
   { path: 'list-player' , component: ListPlayerComponent}
 ];
 
