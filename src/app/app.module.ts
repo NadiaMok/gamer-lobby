@@ -12,7 +12,8 @@ import { AngularMaterialModule } from './material.module';
 import { LoginComponent } from './components/login/login.component';
 import { ListPlayerComponent } from './components/list-player/list-player.component';
 import { JoinGameComponent } from './components/join-game/join-game.component';
-
+import { AddPlayerComponent } from './components/add-player/add-player.component';
+import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
     PlayerRankingsComponent,
     LoginComponent,
     ListPlayerComponent,
-    JoinGameComponent
+    JoinGameComponent,
+    AddPlayerComponent,
+    EditPlayerComponent
   ],
   imports: [
     BrowserModule,
