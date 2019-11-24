@@ -54,7 +54,7 @@ export class ListPlayerComponent implements OnInit {
    }
 
   deletePlayer(index: number, e) {
-    if (window.confirm('Are you sure you want to delete this player?')) {
+    if (window.confirm('Are you sure? You are making the developers sad :(')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;

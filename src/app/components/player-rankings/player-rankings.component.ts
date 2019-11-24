@@ -17,7 +17,7 @@ export class PlayerRankingsComponent implements OnInit {
   PlayerData: any = [];
   dataSource: MatTableDataSource<Player>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'status', 'gamesPlayed'];
+  displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'status', 'gamesPlayed', 'action'];
 
   constructor(private playerApi: ApiService, private router: Router) {
     this.playerApi.GetPlayers().subscribe(data => {
@@ -53,7 +53,7 @@ export class PlayerRankingsComponent implements OnInit {
    }
 
   deletePlayer(index: number, e) {
-    if (window.confirm('Are you sure you want to delete this player?')) {
+    if (window.confirm('Are you sure? You are making the developers sad :(')) {
       const data = this.dataSource.data;
       data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;

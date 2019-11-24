@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
+import { ApiService } from './../../shared/api.service';
+import { Player } from './../../shared/player';
+import { MatPaginator, MatTableDataSource } from '@angular/material';
 
 @Component({
   selector: 'app-join-game',
@@ -11,8 +14,37 @@ export class JoinGameComponent implements OnInit {
 
   game = ' --- ';
   GAMES: Array<string>;
+  playerForm: FormGroup;
+  PlayerData: any = [];
+  dataSource: MatTableDataSource<Player>;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  displayedColumns: string[] =  ['label', 'value'];
 
-  constructor(private router: Router, private formBuilder: FormBuilder, private activatedRoute: ActivatedRoute) { }
+  constructor(private playerApi: ApiService, private router: Router, public fb: FormBuilder,
+              private ngZone: NgZone, private actRoute: ActivatedRoute) {
+    const id = this.actRoute.snapshot.paramMap.get('id');
+    this.playerApi.GetPlayer(id).subscribe(data => {
+    // this.GAMES = [
+    //   'Bioshock',
+    //   'Amnesia: The Dark Descent',
+    //   'Tomb Raider',
+    //   'Fallout NV',
+    //   'Fallout 4',
+    //   'Portal',
+    //   'Portal 2',
+    //   'Super Mario',
+    //   'Grand Theft Auto V',
+    //   'Dead Space',
+    //   'Tetris'
+    // ];
+    this.PlayerData = data;
+    this.dataSource = new MatTableDataSource<Player>(this.PlayerData);
+    setTimeout(() => {
+      this.dataSource.paginator = this.paginator;
+    }, 0);
+    });
+
+  }
 
   ngOnInit() {
     this.GAMES = [
@@ -28,37 +60,15 @@ export class JoinGameComponent implements OnInit {
       'Dead Space',
       'Tetris'
     ];
+  }
 
-    // this._activatedRoute.params.subscribe((data) => {
-    //   this.id = data.id;
-    //   console.log(this.id);
-
-    // });
-    // this._movieService.getMovie(this.id).subscribe((movie) => {
-    //   console.log(movie)
-    //   this.mov = movie[0];
-    //   this.populateForm(movie[0]);
-    // })
-
-    // populateForm(movie) {
-    //   this.editForm =  this._formBuilder.group({
-    //     title: new FormControl(movie.title, Validators.required),
-    //     runningTime: new FormControl(movie.runningTime, [Validators.required, Validators.min(10)]),
-    //     director: new FormControl(movie.director, [Validators.required, Validators.minLength(3)]),
-    //     rating: new FormControl(movie.rating, [Validators.required, Validators.min(0), Validators.max(5)]),
-    //     genre: new FormControl(movie.genre, Validators.required),
-    //     status: new FormControl(movie.status)
-    //   })
-    // }
-    // onSubmit() {
-    //   let videoDocument = this.editForm.value;
-    //   videoDocument['_id'] = this.mov._id;
-    //   this._movieService.updateMovie(this.editForm.value).subscribe((data) => {
-    //     if (data['error']){
-    //       console.log(data['error'])
-    //     }
-    //     this._router.navigate(['./admin']);
-    //   })
-    // }
+  updatePlayerForm() {
+    console.log(this.playerForm.value);
+    const id = this.actRoute.snapshot.paramMap.get('id');
+    if (window.confirm('Are you sure you want to join the game?')) {
+      this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe( res => {
+        this.ngZone.run(() => this.router.navigateByUrl('/player-rankings')); // STATUS UNAVAILABLE, then navigate to player rangind
+      });
+    }
   }
 }

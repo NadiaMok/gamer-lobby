@@ -50,9 +50,10 @@
 <!-- Join Game button -->
 <ng-container matColumnDef="gamesPlayed" >
     <th mat-header-cell *matHeaderCellDef > Join Game </th>
-    <td mat-cell *matCellDef="let record">
+    <td mat-cell *matCellDef="let record; let i = index;">
         <div *ngIf='record.status'>
-            <a routerLink='/join-game/{{record._id}}' routerLinkActive="active">Join Game</a>
+            <button (click)="deletePlayer(i, record)">Delete</button>          
+            <button routerLink="['/join-game/', record._id]" routerLinkActive="active">Join Game</button>
         </div>
     </td>
 </ng-container> 
