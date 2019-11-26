@@ -22,6 +22,7 @@ export class PlayerRankingsComponent implements OnInit {
   constructor(private playerApi: ApiService, private router: Router) {
     this.playerApi.GetPlayers().subscribe(data => {
       this.PlayerData = data;
+      console.log(data);
       this.dataSource = new MatTableDataSource<Player>(this.PlayerData);
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;

@@ -1,7 +1,8 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import {ActivatedRoute, Router} from '@angular/router';
 import { ApiService } from './../../shared/api.service';
+import { Player } from 'src/app/shared/player';
 
 @Component({
   selector: 'app-join-game',
@@ -18,6 +19,7 @@ export class JoinGameComponent implements OnInit {
   playerForm: FormGroup;
   GAMES: Array<string>;
   gamesPlayed: Array<string>;
+  id = this.actRoute.snapshot.paramMap.get('id');
 
   ngOnInit() {
     this.GAMES = [
@@ -42,18 +44,18 @@ export class JoinGameComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private playerApi: ApiService
   ) {
-    const id = this.actRoute.snapshot.paramMap.get('id');
-    this.playerApi.GetPlayer(id).subscribe(data => {
-      this.playerForm = this.fb.group({
-        player: [data.player],
-        rank: [data.rank],
-        score: [data.score],
-        time: [data.time],
-        status: 'false', // ![data.status],
-        favouriteGame: [data.gamesPlayed[Math.floor(Math.random() *
-          data.gamesPlayed.length)]], /* random within the data.gamesPlayed range*/
-        GAMES: [this.GAMES, [Validators.required]]
-      });
+    this.playerForm = new FormGroup({
+      player: new FormControl(),
+      rank: new FormControl(),
+      score: new FormControl(),
+      time: new FormControl(),
+      status: new FormControl(), // ![data.status],
+      favouriteGame: new FormControl(), /* random within the data.gamesPlayed range*/
+      GAMES: new FormControl(null, Validators.required)
+    });
+    this.playerApi.GetPlayer(this.id).subscribe(data => {
+      this.playerForm.patchValue(data);
+      this.playerForm.patchValue({favouriteGame: data.gamesPlayed[Math.floor(Math.random() * data.gamesPlayed.length)]});
     });
   }
 
@@ -65,14 +67,13 @@ export class JoinGameComponent implements OnInit {
   /* Update */
   updatePlayerForm() {
     console.log(this.playerForm.value);
+    console.log(this.playerForm.controls.GAMES.value);
     const id = this.actRoute.snapshot.paramMap.get('id');
-    // this.playerApi.GetPlayer(id).subscribe(data => {
-    //   console.log(data.status);
-    // });
-    if (window.confirm('Are you sure you want to update?')) {
-      this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe( res => {
-        this.ngZone.run(() => this.router.navigateByUrl('/player-rankings'));
-      });
+    if (this.playerForm.valid) {
+      if (this.playerForm.controls.GAMES.value) {
+        this.playerForm.patchValue({status: false});
+      }
+      this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe(res => this.router.navigateByUrl('/player-rankings'));
     }
   }
 }
