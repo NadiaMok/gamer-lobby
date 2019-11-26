@@ -3,9 +3,9 @@
 
 To do:
 
-Page appearances:
+Compoments:
 -player ranking page
--join game page - PRIORITY
+-join game page - PASS DATA
 -admin login page
 -player listing page 
 -add player page
@@ -16,5 +16,5 @@ Page appearances:
 -generate remaning components
 -validation for admin pages - authentication
 -add images
--populate db
+-comment code
 -clean up code

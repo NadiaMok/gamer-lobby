@@ -1,54 +1,58 @@
+<form [formGroup]="playerForm" (ngSubmit)="updatePlayerForm()" #resetStudentForm="ngForm" novalidate >
+    <mat-card>
+      <!-- Player name -->
+      <mat-form-field>
+        <input matInput type='text' formControlName="player" [readonly]='true'>
+        <span matPrefix>Player:&nbsp;</span>
+      </mat-form-field>
 
-<form>
-  <!-- Game -->
-<mat-form-field>
-  <mat-label>Select a game</mat-label>
-  <mat-select [(value)]="game">
-    <mat-option *ngFor="let game of GAMES" value="{{ game }}">
-      {{ game }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>
+      <!-- Player Rank -->
+      <mat-form-field class="example-full-width">
+        <input matInput formControlName="rank" [readonly]='true'>
+        <span matPrefix>Rank:&nbsp;</span>
+      </mat-form-field>
 
+      <!-- Player score -->
+      <mat-form-field class="example-full-width">
+          <input matInput formControlName="score" [readonly]='true'>
+          <span matPrefix>Score:&nbsp;</span>
+      </mat-form-field>
+
+      <!-- Player time -->
+      <mat-form-field class="example-full-width">
+          <input matInput formControlName="time" [readonly]='true'>
+          <span matPrefix>Time:&nbsp;</span>
+      </mat-form-field>
+
+      <!-- Favourite Game -->
+      <mat-form-field class="example-full-width">
+          <input matInput formControlName="favouriteGame" [readonly]='true'>
+          <span matPrefix>Favourite game:&nbsp;</span>
+      </mat-form-field>
+
+      <!-- All Games -->
+      <mat-form-field class="example-full-width">
+          <mat-label>Select a game</mat-label>
+          <mat-select [(value)]="game" formControlName="GAMES">
+            <mat-option>---</mat-option>
+            <mat-option *ngFor="let game of GAMES" value="{{ game }}">
+              {{ game }}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="handleError('GAMES', 'required')">
+              Please select a game
+          </mat-error>
+      </mat-form-field>
+  </mat-card>
 
   <!-- Submit & Reset -->
   <mat-card>
     <div class="full-wrapper button-wrapper">
       <div class="button-wrapper">
-        <button mat-flat-button color="warn">Join</button>
-        <button mat-flat-button color="secondary" routerLink="/player-rankings" >Cancel</button>
+        <button mat-flat-button color="primary">Update</button>
+        <button mat-flat-button color="secondary" [routerLink]="['/player-rankings']">Cancel</button>
       </div>
     </div>
   </mat-card>
 </form>
-
-
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-    <!-- Player -->
-    <ng-container matColumnDef="label">
-        <th mat-header-cell *matHeaderCellDef> Player </th>
-        <td mat-cell *matCellDef="let record"> {{record.label}} </td>
-    </ng-container> 
-
-    <!-- Player -->
-    <ng-container matColumnDef="value">
-        <th mat-header-cell *matHeaderCellDef> Player </th>
-        <td mat-cell *matCellDef="let record"> {{record.value}} </td>
-    </ng-container> 
-    
-    
-    
-<!--     
-    <ng-container matColumnDef="action" >
-            <th mat-header-cell *matHeaderCellDef > Join Game </th>
-            <td mat-cell *matCellDef="let record; let i = index">
-                <div *ngIf='record.status'>
-                    <button mat-raised-button color="primary" class="push-right" [routerLink]="['/join-game/', record._id]">Join Game</button>
-                </div>
-            </td>
-    </ng-container> -->
-    
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+  
