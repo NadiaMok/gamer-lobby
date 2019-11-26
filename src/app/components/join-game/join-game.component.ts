@@ -49,7 +49,7 @@ export class JoinGameComponent implements OnInit {
         rank: [data.rank],
         score: [data.score],
         time: [data.time],
-        status: [data.status],
+        status: 'false', // ![data.status],
         favouriteGame: [data.gamesPlayed[Math.floor(Math.random() *
           data.gamesPlayed.length)]], /* random within the data.gamesPlayed range*/
         GAMES: [this.GAMES, [Validators.required]]

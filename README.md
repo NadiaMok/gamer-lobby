@@ -5,8 +5,7 @@ To do:
 
 Compoments:
 -player ranking page
--join game page - PASS DATA
--admin login page
+-join game page - PASS DATA, FORM IS NOT SUBMITTING
 -player listing page 
 -add player page
 -edit player page
