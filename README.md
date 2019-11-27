@@ -4,9 +4,9 @@
 To do:
 
 Compoments:
--player ranking page
--join game page
--player listing page 
++player ranking page
++join game page
+-player listing page*** list-player - add new player button, update, delete btn; players-games tabs; center search
 -add player page
 -edit player page
 -games listing page
@@ -16,6 +16,7 @@ Compoments:
 -add images
 -comment code
 -clean up code
+-join game as popup
 
 
 Heroku:

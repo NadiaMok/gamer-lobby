@@ -30,12 +30,12 @@ export class ListPlayerComponent implements OnInit {
     });
     this.navLinks = [
       {
-        label: 'Player',
-        link: '/player-rankings',
+        label: 'Players',
+        link: '/list-player',
         index: 0
       }, {
         label: 'Games',
-        link: '/login',
+        link: '/list-game',
         index: 1
       }
       ];

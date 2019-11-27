@@ -3,6 +3,7 @@ import { ApiService } from './../../shared/api.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { MatPaginator, MatTableDataSource } from '@angular/material';
 import { Router } from '@angular/router';
+import { MatButtonModule } from '@angular/material';
 
 @Component({
   selector: 'app-player-rankings',

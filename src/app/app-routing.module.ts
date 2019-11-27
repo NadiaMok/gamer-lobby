@@ -6,6 +6,7 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { ListPlayerComponent } from './components/list-player/list-player.component';
+import { ListGameComponent } from './components/list-game/list-game.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'player-rankings' },
@@ -14,7 +15,8 @@ const routes: Routes = [
   { path: 'join-game/:id', component: JoinGameComponent },
   { path: 'add-player', component: AddPlayerComponent },
   { path: 'edit-player/:id' , component: EditPlayerComponent},
-  { path: 'list-player' , component: ListPlayerComponent}
+  { path: 'list-player' , component: ListPlayerComponent},
+  { path: 'list-game' , component: ListGameComponent}
 ];
 
 @NgModule({
