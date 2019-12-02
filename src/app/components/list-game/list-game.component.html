@@ -1,1 +1,10 @@
+<nav mat-tab-nav-bar>
+    <a mat-tab-link *ngFor="let link of navLinks" [routerLink]='link.link'
+      routerLinkActive #rla="routerLinkActive" active="rla.isActive">
+      {{link.label}}
+    </a>
+</nav> 
+<br>
+<a mat-raised-button color="primary" class="push-right btn-login" [routerLink]="['/player-rankings']">Logout</a>
+
 <p>list-game works!</p>

@@ -6,11 +6,11 @@ To do:
 Compoments:
 +player ranking page
 +join game page
--player listing page*** list-player - add new player button, update, delete btn; players-games tabs; center search
++page not found
+-player listing page***  - add new player button, update, delete btn;
 -add player page
 -edit player page
 -games listing page
--page not found
 
 -validation for admin pages - authentication
 -add images

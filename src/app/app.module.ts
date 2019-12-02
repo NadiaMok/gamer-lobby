@@ -15,6 +15,7 @@ import { JoinGameComponent } from './components/join-game/join-game.component';
 import { AddPlayerComponent } from './components/add-player/add-player.component';
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { ListGameComponent } from './components/list-game/list-game.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ListGameComponent } from './components/list-game/list-game.component';
     JoinGameComponent,
     AddPlayerComponent,
     EditPlayerComponent,
-    ListGameComponent
+    ListGameComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

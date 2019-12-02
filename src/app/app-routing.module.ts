@@ -7,6 +7,7 @@ import { AddPlayerComponent } from './components/add-player/add-player.component
 import { EditPlayerComponent } from './components/edit-player/edit-player.component';
 import { ListPlayerComponent } from './components/list-player/list-player.component';
 import { ListGameComponent } from './components/list-game/list-game.component';
+import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'player-rankings' },
@@ -16,7 +17,10 @@ const routes: Routes = [
   { path: 'add-player', component: AddPlayerComponent },
   { path: 'edit-player/:id' , component: EditPlayerComponent},
   { path: 'list-player' , component: ListPlayerComponent},
-  { path: 'list-game' , component: ListGameComponent}
+  { path: 'list-game' , component: ListGameComponent},
+  // page not found
+  {path: '404', component: PageNotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

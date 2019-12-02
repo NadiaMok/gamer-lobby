@@ -11,7 +11,7 @@ mongoose.Promise = global.Promise;
 mongoose.connect(dataBaseConfig.db, {
   useNewUrlParser: true
 }).then(() => {
-    console.log('Database connected sucessfully ')
+    console.log('Database connected successfully ')
   },
   error => {
     console.log('Could not connected to database : ' + error)
