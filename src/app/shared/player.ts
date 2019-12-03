@@ -6,6 +6,6 @@ export class Player {
     score: number;
     time: string;
     status: boolean;
-    favouriteGame: string;
     gamesPlayed: Array<string>;
+    favouriteGame: string;
 }

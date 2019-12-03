@@ -1,14 +1,13 @@
 # Nadia Mokhireva 101149416
 # Parisa Khataei 101111190
 
--list player                             |     ADMIN
++list player                             |     ADMIN
 -add player page - add function          |     ADMIN
 -edit player page - update function      |     ADMIN
--games listing page                      |     ADMIN
++games listing page                      |     ADMIN
 
--validation for admin pages
--ERROR - CAN'T GET a page when access from phone
--favourite game property read: delete all players, add new, change how we get game: JoinGameComponent
+-authentication
+-favourite game property read: add players with fav game - join game component
 -list player logout btn
 
 Small stuff:
