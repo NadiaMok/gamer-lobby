@@ -7,17 +7,19 @@ Compoments:
 +player ranking page
 +join game page
 +page not found
--player listing page***  - add new player button, update, delete btn;
+-player listing page - ******delete
 -add player page
 -edit player page
 -games listing page
 
 -validation for admin pages - authentication
+-ERROR - CAN'T GET a page when access from phone
 -add images
--comment code
 -clean up code
--join game as popup
 
+Small stuff:
+-container layout (margins)
+-highlight active tab
 
 Heroku:
 Front: https://gamer-lobby-front.herokuapp.com

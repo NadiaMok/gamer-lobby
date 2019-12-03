@@ -17,8 +17,9 @@ export class ListPlayerComponent implements OnInit {
 
   PlayerData: any = [];
   dataSource: MatTableDataSource<Player>;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'status', 'gamesPlayed'];
+  @ViewChild(MatPaginator, {static: false}) paginator: MatPaginator;
+  displayedColumns: string[] =  ['player', 'rank', 'score', 'time', 'status', 'gamesPlayed', 'update', 'delete'];
+
 
   constructor(private playerApi: ApiService, private router: Router) {
     this.playerApi.GetPlayers().subscribe(data => {
@@ -56,9 +57,8 @@ export class ListPlayerComponent implements OnInit {
   deletePlayer(index: number, e) {
     if (window.confirm('Are you sure? You are making the developers sad :(')) {
       const data = this.dataSource.data;
-      data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
       this.dataSource.data = data;
-      this.playerApi.DeletePlayer(e._id).subscribe();
+      this.playerApi.DeletePlayer(e._id).subscribe(); // does not update the page, I have to do it manually
     }
   }
 }

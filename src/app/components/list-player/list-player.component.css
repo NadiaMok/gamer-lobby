@@ -12,11 +12,6 @@ table{
 }
 .btn-login{
     position: absolute;
-    right: 5%;
-    margin: 0;
-}
-
-.search{
-    display: block;
-    margin: 0 auto;
+    right: 13%;
+    margin-bottom: 1%;
 }
