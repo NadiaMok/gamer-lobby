@@ -2,12 +2,13 @@
 # Parisa Khataei 101111190
 
 +list player                             |     ADMIN
--add player page - add function          |     ADMIN
--edit player page - update function      |     ADMIN
+4. add player page - add function          |     ADMIN
+5. edit player page - update function      |     ADMIN
 +games listing page                      |     ADMIN
 
--authentication
--favourite game property read: add players with fav game - join game component
+3. authentication
+1. favourite game property read: add players with fav game - join game component
+2. check list-game page, list-player
 -list player logout btn
 
 Small stuff:

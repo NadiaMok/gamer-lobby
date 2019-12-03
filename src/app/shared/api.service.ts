@@ -10,7 +10,7 @@ import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http
 
 export class ApiService {
 
-  endpoint = '/api';
+  endpoint = 'gamer-lobby-back.herokuapp.com/api';
   headers = new HttpHeaders().set('Content-Type', 'application/json');
 
   constructor(private http: HttpClient) { }
@@ -70,30 +70,4 @@ export class ApiService {
     return throwError(errorMessage);
   }
 
-  /* GAMES */
-
-  // Add game
-  // AddGame(data: Game): Observable<any> {
-  //   const API_URL = `${this.endpoint}/add-game`;
-  //   return this.http.post(API_URL, data)
-  //     .pipe(
-  //       catchError(this.errorMgmt)
-  //     );
-  // }
-
-  // Get all games
-  // GetGames() {
-  //   return this.http.get(`${this.endpoint}/games`);
-  // }
-
-  // Get game
-  // GetGame(id): Observable<any> {
-  //   const API_URL = `${this.endpoint}/read-game/${id}`;
-  //   return this.http.get(API_URL, { headers: this.headers }).pipe(
-  //     map((res: Response) => {
-  //       return res || {};
-  //     }),
-  //     catchError(this.errorMgmt)
-  //   );
-  // }
 }
