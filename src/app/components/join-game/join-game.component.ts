@@ -1,6 +1,6 @@
 import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
-import {ActivatedRoute, Router} from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../../shared/api.service';
 import { Player } from 'src/app/shared/player';
 
@@ -49,13 +49,15 @@ export class JoinGameComponent implements OnInit {
       rank: new FormControl(),
       score: new FormControl(),
       time: new FormControl(),
-      status: new FormControl(), // ![data.status],
-      favouriteGame: new FormControl(), /* random within the data.gamesPlayed range*/
+      status: new FormControl(),
+      favouriteGame: new FormControl(),
       GAMES: new FormControl(null, Validators.required)
     });
     this.playerApi.GetPlayer(this.id).subscribe(data => {
       this.playerForm.patchValue(data);
-      this.playerForm.patchValue({favouriteGame: data.gamesPlayed[Math.floor(Math.random() * data.gamesPlayed.length)]});
+      // this.playerForm.patchValue({favouriteGame: data.gamesPlayed[Math.floor(Math.random() * data.gamesPlayed.length)]});
+      // this.playerForm.patchValue({favouriteGame: data.favouriteGame});
+
     });
   }
 

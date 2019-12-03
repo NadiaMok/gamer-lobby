@@ -9,14 +9,14 @@ table, ng-container, th {
 table{
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 5%;
 }
 .btn-login{
     position: absolute;
-    right: 5%;
-    margin: 0;
+    right: 13%;
+    margin-bottom: 1%;
 }
-
-.search{
-    display: block;
+.mat-paginator{
+    width: 50%;
     margin: 0 auto;
 }

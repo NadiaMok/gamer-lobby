@@ -1,1 +1,81 @@
-<p>edit-player works!</p>
+<form [formGroup]="playerForm" (ngSubmit)="submitPlayerForm()" #resetPlayerForm="ngForm" novalidate>
+        <mat-card>
+          <h3 class=text-center style="font-weight: normal;">Edit Player</h3>
+  
+          <!-- Player name -->
+          <mat-form-field>
+            <mat-label>Player</mat-label>
+            <input matInput type='text' placeholder="Player Name" formControlName="player">
+              <mat-error *ngIf="handleError('player', 'required')">
+                You must provide a<strong>name</strong>
+              </mat-error>
+          </mat-form-field>
+  
+          <!-- Player Rank -->
+          <mat-form-field>
+            <mat-label>Rank</mat-label>
+            <mat-select>
+              <mat-option>---</mat-option>
+              <mat-option *ngFor="let rank of ranks" [value]="rank">{{rank}}</mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('rank', 'required')">
+                Please provide a <strong>rank</strong>
+              </mat-error>
+          </mat-form-field>
+  
+          <!-- Player score -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Score" formControlName="score">
+            <mat-error *ngIf="handleError('score', 'required')">
+              Please provide a <strong>score</strong>
+            </mat-error>
+          </mat-form-field>
+    
+          <!-- Player time -->
+          <mat-form-field class="example-full-width">
+            <input matInput placeholder="Time" formControlName="time">
+            <mat-error *ngIf="handleError('time', 'required')">
+              Please provide a <strong>time</strong>
+            </mat-error>
+          </mat-form-field>
+    
+          <!-- Favourite Game -->
+          <mat-form-field class="example-full-width">
+              <mat-label>Favourite Game</mat-label>
+              <mat-select [(value)]="game" formControlName="GAMES">
+                <mat-option>---</mat-option>
+                <mat-option *ngFor="let game of GAMES" value="{{ game }}">
+                  {{ game }}
+                </mat-option>
+              </mat-select>
+              <mat-error *ngIf="handleError('GAMES', 'required')">
+                  Please select a game
+              </mat-error>
+          </mat-form-field>
+  
+          <!-- Status -->
+          <mat-form-field class="example-full-width">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="GAMES">
+              <mat-option></mat-option>
+              <mat-option value=false>
+                Unavailable
+              </mat-option>
+              <mat-option value=true>
+                Available
+              </mat-option>
+            </mat-select>
+            <mat-error *ngIf="handleError('GAMES', 'required')">
+                Please select the status
+            </mat-error>
+        </mat-form-field>
+  
+        <div class="full-wrapper button-wrapper">
+          <div class="button-wrapper">
+            <button mat-flat-button color="primary">Update</button>
+            <button mat-flat-button color="secondary" [routerLink]="['/list-player']">Cancel</button>
+          </div>
+        </div>
+      </mat-card>
+  </form>
+  

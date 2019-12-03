@@ -1,25 +1,20 @@
 # Nadia Mokhireva 101149416
 # Parisa Khataei 101111190
 
-To do:
+-list player                             |     ADMIN
+-add player page - add function          |     ADMIN
+-edit player page - update function      |     ADMIN
+-games listing page                      |     ADMIN
 
-Compoments:
-+player ranking page
-+join game page
-+page not found
--player listing page - ******delete
--add player page
--edit player page
--games listing page
-
--validation for admin pages - authentication
+-validation for admin pages
 -ERROR - CAN'T GET a page when access from phone
--add images
--clean up code
+-favourite game property read: delete all players, add new, change how we get game: JoinGameComponent
+-list player logout btn
 
 Small stuff:
 -container layout (margins)
 -highlight active tab
+-forms to mat-grid
 
 Heroku:
 Front: https://gamer-lobby-front.herokuapp.com

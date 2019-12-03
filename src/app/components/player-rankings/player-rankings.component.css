@@ -9,6 +9,7 @@ table, ng-container, th {
 table{
     width: 80%;
     margin: 0 auto;
+    margin-bottom: 5%;
 }
 .btn-login{
     position: absolute;
@@ -18,5 +19,10 @@ table{
 
 .search{
     display: block;
+    margin: 0 auto;
+}
+
+.mat-paginator{
+    width: 50%;
     margin: 0 auto;
 }

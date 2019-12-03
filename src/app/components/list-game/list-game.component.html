@@ -4,7 +4,67 @@
       {{link.label}}
     </a>
 </nav> 
-<br>
-<a mat-raised-button color="primary" class="push-right btn-login" [routerLink]="['/player-rankings']">Logout</a>
+<!--  rating, publisher, release, status -->
 
-<p>list-game works!</p>
+<mat-grid-list cols="3" rowHeight="150px">
+  <!-- Search -->
+  <mat-grid-tile [colspan]="2" [rowspan]="1">
+      <mat-form-field>
+          <input matInput (keyup)="applyFilter($event.target.value)" placeholder="Search">
+      </mat-form-field>
+  </mat-grid-tile>
+  <mat-grid-tile [colspan]="1" [rowspan]="1">
+    <a mat-raised-button color="primary" class="push-right" [routerLink]="['/player-rankings']">Logout</a>
+  </mat-grid-tile>
+</mat-grid-list>
+    
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<div *ngFor='let game of GAMES'>
+{{game.title}}
+</div>
+
+<!-- Title -->
+<ng-container matColumnDef="title">
+  <th mat-header-cell *matHeaderCellDef> Title </th>
+  <td mat-cell *matCellDef="let record"> {{record.title}} </td>
+</ng-container> 
+
+<!-- Platform -->
+<ng-container matColumnDef="platform">
+  <th mat-header-cell *matHeaderCellDef> Platform </th>
+  <td mat-cell *matCellDef="let record"> {{record.platform}} </td>
+</ng-container>
+
+<!-- Genre  -->
+<ng-container matColumnDef="genre">
+  <th mat-header-cell *matHeaderCellDef> Genre </th>
+  <td mat-cell *matCellDef="let record"> {{record.genre}} </td>
+</ng-container>
+
+<!-- Rating -->
+<ng-container matColumnDef="rating">
+  <th mat-header-cell *matHeaderCellDef> Rating </th>
+  <td mat-cell *matCellDef="let record"> {{record.rating}} </td>
+</ng-container>
+
+<!-- Publisher -->
+<ng-container matColumnDef="publisher" >
+  <th mat-header-cell *matHeaderCellDef > Publisher </th>
+  <td mat-cell *matCellDef="let record"> {{record.publisher}} </td>
+</ng-container> 
+
+<!-- Release -->
+<ng-container matColumnDef="release">
+  <th mat-header-cell *matHeaderCellDef> Release </th>
+  <td mat-cell *matCellDef="let record"> {{record.release}} </td>
+</ng-container> 
+
+<!-- Status -->
+<ng-container matColumnDef="status">
+  <th mat-header-cell *matHeaderCellDef> Status </th>
+  <td mat-cell *matCellDef="let record"> {{record.status ? 'Active' : 'Inactive'}} </td>
+</ng-container>
+
+<tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+<tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>

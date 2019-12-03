@@ -52,5 +52,6 @@ export class PlayerRankingsComponent implements OnInit {
     this.router.events.subscribe((res) => {
       this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
     });
-   }
+    // data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
+  }
 }

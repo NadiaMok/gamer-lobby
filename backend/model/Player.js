@@ -19,6 +19,9 @@ let Player = new Schema({
     },
     gamesPlayed: {
         type: Array
+    },
+    favouriteGame: {
+        type: String
     }
 }, {
   collection: 'players'
