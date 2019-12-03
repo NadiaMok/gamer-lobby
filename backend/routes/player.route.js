@@ -6,6 +6,7 @@ let Player = require('../model/Player');
 
 // Add Player
 playerRoute.route('/add-player').post((req, res, next) => {
+  console.log()
   Player.create(req.body, (error, data) => {
     if (error) {
       return next(error)
