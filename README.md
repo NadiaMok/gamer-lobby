@@ -3,13 +3,12 @@
 
 1. edit player page - update function, layout
 2. authentication (list-player, list-game, add-player, edit-player)
-3. list player logout btn
-4. favourite game property read after crud is done
+
+* when I add a player, favourite game is not passed
 
 Small stuff:
 -container layout (margins)
 -highlight active tab
--forms to mat-grid
 
 Heroku:
 Front: https://gamer-lobby-front.herokuapp.com

@@ -1,5 +1,6 @@
 <form [formGroup]="playerForm" (ngSubmit)="updatePlayerForm()" #resetPlayerForm="ngForm" novalidate >
     <mat-card>
+      <h3 class=text-center >Join Game</h3>
       <!-- Player name -->
       <mat-form-field>
         <input matInput type='text' formControlName="player" [readonly]='true'>

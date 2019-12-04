@@ -5,9 +5,8 @@
     </a>
 </nav> 
 <br>
-<a mat-raised-button color="primary" class="push-right btn-login" [routerLink]="['/player-rankings']">Logout</a>
 
-<mat-grid-list cols="3" rowHeight="150px">
+<mat-grid-list cols="4" rows="2" rowHeight="150px">
     <!-- Search -->
     <mat-grid-tile [colspan]="2" [rowspan]="1">
         <mat-form-field>
@@ -16,7 +15,9 @@
     </mat-grid-tile>
     <!-- Add Player -->
     <mat-grid-tile [colspan]="1" [rowspan]="1">
-        <a mat-raised-button color="primary" class="push-right" [routerLink]="['/add-player']" >Add Player</a>        
+        <a mat-raised-button color="primary" class="push-right btn-login" [routerLink]="['/player-rankings']">Logout</a>
+        &nbsp;
+        <a mat-raised-button color="primary" class="push-right" [routerLink]="['/add-player']" >Add Player</a> 
     </mat-grid-tile>
 </mat-grid-list>
       
