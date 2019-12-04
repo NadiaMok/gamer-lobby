@@ -5,18 +5,27 @@
         <!-- Player name -->
         <mat-form-field>
           <mat-label>Player</mat-label>
-          <input matInput type='text' placeholder="Player Name" formControlName="player">
+          <input matInput type="text" placeholder="Player Name" formControlName="player">
             <mat-error *ngIf="handleError('player', 'required')">
-              You must provide a<strong>name</strong>
+              Please provide a <strong>player name</strong>
             </mat-error>
         </mat-form-field>
 
         <!-- Player Rank -->
         <mat-form-field>
           <mat-label>Rank</mat-label>
-          <mat-select>
+          <mat-select formControlName="rank">
             <mat-option>---</mat-option>
-            <mat-option *ngFor="let rank of ranks" [value]="rank">{{rank}}</mat-option>
+            <mat-option value=1>1</mat-option>
+            <mat-option value=2>2</mat-option>
+            <mat-option value=3>3</mat-option>
+            <mat-option value=4>4</mat-option>
+            <mat-option value=5>5</mat-option>
+            <mat-option value=6>6</mat-option>
+            <mat-option value=7>7</mat-option>
+            <mat-option value=8>8</mat-option>
+            <mat-option value=9>9</mat-option>
+            <mat-option value=10>10</mat-option>
           </mat-select>
           <mat-error *ngIf="handleError('rank', 'required')">
               Please provide a <strong>rank</strong>
@@ -42,22 +51,30 @@
         <!-- Favourite Game -->
         <mat-form-field class="example-full-width">
             <mat-label>Favourite Game</mat-label>
-            <mat-select [(value)]="game" formControlName="GAMES">
+            <mat-select formControlName="favouriteGame">
               <mat-option>---</mat-option>
-              <mat-option *ngFor="let game of GAMES" value="{{ game }}">
-                {{ game }}
-              </mat-option>
+              <mat-option value="Bioshock">Bioshock</mat-option>
+              <mat-option value="Amnesia: The Dark Descent">Amnesia: The Dark Descent</mat-option>
+              <mat-option value="Tomb Raider">Tomb Raider</mat-option>
+              <mat-option value="Fallout NV">Fallout NV</mat-option>
+              <mat-option value="Fallout 4">Fallout 4</mat-option>
+              <mat-option value="Portal">Portal</mat-option>
+              <mat-option value="Portal 2">Portal 2</mat-option>
+              <mat-option value="Super Mario">Super Mario</mat-option>
+              <mat-option value="Grand Theft Auto V">Grand Theft Auto V</mat-option>
+              <mat-option value="Dead Space">Dead Space</mat-option>
+              <mat-option value="Tetris">Tetris</mat-option>
             </mat-select>
-            <mat-error *ngIf="handleError('GAMES', 'required')">
-                Please select a game
+            <mat-error *ngIf="handleError('favouriteGame', 'required')">
+                Please select a <strong>game</strong>
             </mat-error>
         </mat-form-field>
 
         <!-- Status -->
         <mat-form-field class="example-full-width">
           <mat-label>Status</mat-label>
-          <mat-select formControlName="GAMES">
-            <mat-option></mat-option>
+          <mat-select formControlName="status">
+            <mat-option>---</mat-option>
             <mat-option value=false>
               Unavailable
             </mat-option>
@@ -65,14 +82,16 @@
               Available
             </mat-option>
           </mat-select>
-          <mat-error *ngIf="handleError('GAMES', 'required')">
-              Please select the status
+          <mat-error *ngIf="handleError('status', 'required')">
+              Please select the <strong>status</strong>
           </mat-error>
       </mat-form-field>
+    </mat-card>
 
+    <mat-card>
       <div class="full-wrapper button-wrapper">
         <div class="button-wrapper">
-          <button mat-flat-button color="primary">Add</button>
+          <button mat-flat-button color="warn">Submit</button>
           <button mat-flat-button color="secondary" [routerLink]="['/list-player']">Cancel</button>
         </div>
       </div>
