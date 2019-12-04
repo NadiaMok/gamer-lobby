@@ -55,9 +55,6 @@ export class JoinGameComponent implements OnInit {
     });
     this.playerApi.GetPlayer(this.id).subscribe(data => {
       this.playerForm.patchValue(data);
-      // this.playerForm.patchValue({favouriteGame: data.gamesPlayed[Math.floor(Math.random() * data.gamesPlayed.length)]});
-      // this.playerForm.patchValue({favouriteGame: data.favouriteGame});
-
     });
   }
 
