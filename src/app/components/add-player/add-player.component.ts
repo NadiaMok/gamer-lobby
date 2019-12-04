@@ -42,16 +42,16 @@ export class AddPlayerComponent implements OnInit {
   public handleError = (controlName: string, errorName: string) => {
     return this.playerForm.controls[controlName].hasError(errorName);
   }
+
   // add 'games played' as an empty array
   submitPlayerForm() {
     if (this.playerForm.valid) {
-      console.log('all good');
       this.playerForm.patchValue({gamesPlayed: []});
       this.playerApi.AddPlayer(this.playerForm.value).subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/list-player'));
       });
     } else {
-      console.log('error');
+      alert('Something went wrong. Please try again');
     }
   }
 

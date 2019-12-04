@@ -2,7 +2,6 @@ import { Component, OnInit, NgZone, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ApiService } from './../../shared/api.service';
-import { Player } from 'src/app/shared/player';
 
 @Component({
   selector: 'app-join-game',
@@ -51,6 +50,7 @@ export class JoinGameComponent implements OnInit {
       time: new FormControl(),
       status: new FormControl(),
       favouriteGame: new FormControl(),
+      gamesPlayed: new FormControl(),
       GAMES: new FormControl(null, Validators.required)
     });
     this.playerApi.GetPlayer(this.id).subscribe(data => {
@@ -65,12 +65,15 @@ export class JoinGameComponent implements OnInit {
 
   /* Update */
   updatePlayerForm() {
-    console.log(this.playerForm.value);
-    console.log(this.playerForm.controls.GAMES.value);
+    console.log('played: ' + this.playerForm.controls.gamesPlayed.value);
+    console.log('joined: ' + this.playerForm.controls.GAMES.value);
+
     const id = this.actRoute.snapshot.paramMap.get('id');
     if (this.playerForm.valid) {
       if (this.playerForm.controls.GAMES.value) {
-        this.playerForm.patchValue({status: false});
+        this.playerForm.patchValue({status: false,
+                                    gamesPlayed: (this.playerForm.controls.gamesPlayed.value)
+                                      .push(this.playerForm.controls.GAMES.value)});
       }
       this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe(res => this.router.navigateByUrl('/player-rankings'));
     }

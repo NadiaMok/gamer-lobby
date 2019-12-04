@@ -23,7 +23,6 @@ export class PlayerRankingsComponent implements OnInit {
   constructor(private playerApi: ApiService, private router: Router) {
     this.playerApi.GetPlayers().subscribe(data => {
       this.PlayerData = data;
-      console.log(data);
       this.dataSource = new MatTableDataSource<Player>(this.PlayerData);
       setTimeout(() => {
         this.dataSource.paginator = this.paginator;
@@ -52,6 +51,5 @@ export class PlayerRankingsComponent implements OnInit {
     this.router.events.subscribe((res) => {
       this.activeLinkIndex = this.navLinks.indexOf(this.navLinks.find(tab => tab.link === '.' + this.router.url));
     });
-    // data.splice((this.paginator.pageIndex * this.paginator.pageSize) + index, 1);
   }
 }

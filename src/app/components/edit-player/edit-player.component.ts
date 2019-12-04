@@ -19,8 +19,23 @@ export class EditPlayerComponent implements OnInit {
 
   @ViewChild('resetPlayerForm', {static: false}) myNgForm;
   gamesPlayed: Array<string>;
-  id = this.actRoute.snapshot.paramMap.get('id');
-  GAMES: Array<string>;
+  GAMES: any = [
+    'Bioshock',
+    'Amnesia: The Dark Descent',
+    'Tomb Raider',
+    'Fallout NV',
+    'Fallout 4',
+    'Portal',
+    'Portal 2',
+    'Super Mario',
+    'Grand Theft Auto V',
+    'Dead Space',
+    'Tetris'
+  ];
+
+  ngOnInit() {
+    this.updateNewForm();
+  }
 
   constructor(
     public fb: FormBuilder,
@@ -29,51 +44,32 @@ export class EditPlayerComponent implements OnInit {
     private actRoute: ActivatedRoute,
     private playerApi: ApiService
   ) {
-    this.playerForm = new FormGroup({
-      player: new FormControl(),
-      rank: new FormControl(),
-      score: new FormControl(),
-      time: new FormControl(),
-      status: new FormControl(),
-      favouriteGame: new FormControl(),
-    });
-    this.playerApi.GetPlayer(this.id).subscribe(data => {
-      this.playerForm.patchValue(data);
-      // this.playerForm.patchValue({favouriteGame: data.gamesPlayed[Math.floor(Math.random() * data.gamesPlayed.length)]});
-    });
-
-    /*
     const id = this.actRoute.snapshot.paramMap.get('id');
-    this.studentApi.GetPlayer(id).subscribe(data => {
-      console.log(data.subjects);
-      this.subjectArray = data.subjects;
+    this.playerApi.GetPlayer(id).subscribe(data => {
+      console.log(data);
+      console.log(data.rank);
+      console.log(data.status);
+
       this.playerForm = this.fb.group({
         player: [data.player, [Validators.required]],
-        studentEmail: [data.studentEmail, [Validators.required]],
-        section: [data.section, [Validators.required]],
-        subjects: [data.subjects],
-        dob: [data.dob, [Validators.required]],
-        gender: [data.gender]
+        rank: [(String)(data.rank), [Validators.required]],
+        score: [data.score, [Validators.required]],
+        time: [data.time, [Validators.required]],
+        status: [(String)(data.status), [Validators.required]],
+        favouriteGame: [(String)(data.favouriteGame), [Validators.required]]
       });
     });
-    */
   }
 
-  ngOnInit() {
-    this.GAMES = [
-      'Bioshock',
-      'Amnesia: The Dark Descent',
-      'Tomb Raider',
-      'Fallout NV',
-      'Fallout 4',
-      'Portal',
-      'Portal 2',
-      'Super Mario',
-      'Grand Theft Auto V',
-      'Dead Space',
-      'Tetris'
-    ];
-    this.updatePlayerForm();
+  updateNewForm() {
+    this.playerForm = this.fb.group({
+      player: ['', [Validators.required]],
+      rank: ['', [Validators.required]],
+      score: ['', [Validators.required]],
+      time: ['', [Validators.required]],
+      status: [true, [Validators.required]],
+      favouriteGame: ['', [Validators.required]]
+    });
   }
 
   public handleError = (controlName: string, errorName: string) => {
@@ -81,10 +77,10 @@ export class EditPlayerComponent implements OnInit {
   }
 
   updatePlayerForm() {
+    console.log(this.playerForm.value);
     const id = this.actRoute.snapshot.paramMap.get('id');
     if (this.playerForm.valid) {
       if (window.confirm('Are you sure you want to update?')) {
-        this.playerForm.patchValue({status: false});
         this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe(res => {
           this.ngZone.run(() => this.router.navigateByUrl('/player-rankings'));
         });
