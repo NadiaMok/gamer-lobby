@@ -48,9 +48,13 @@ export class ListGameComponent implements OnInit {
 
   GAMES: any = [];
   dataSource: MatTableDataSource<Game>;
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   displayedColumns: string[] =  ['title', 'platform', 'genre', 'rating', 'publisher', 'release', 'status'];
 
   constructor(private router: Router) {
+    this.GAMES = [bioshock, amnesia, tombRaider, fallout4, falloutNV, tetris, superMario, gta4, portal, portal2, deadSpace];
+    this.dataSource = new MatTableDataSource<Game>(this.GAMES);
+    this.dataSource.paginator = this.paginator;
     this.navLinks = [
       {
         label: 'Players',
@@ -70,8 +74,8 @@ export class ListGameComponent implements OnInit {
 
   ngOnInit() {
 
-    this.GAMES = [bioshock, amnesia, tombRaider, fallout4, falloutNV, tetris, superMario, gta4, portal, portal2, deadSpace];
-    this.dataSource = new MatTableDataSource<Game>(this.GAMES);
+    // this.GAMES = [bioshock, amnesia, tombRaider, fallout4, falloutNV, tetris, superMario, gta4, portal, portal2, deadSpace];
+    // this.dataSource = new MatTableDataSource<Game>(this.GAMES);
 
     // tabs
     this.router.events.subscribe((res) => {

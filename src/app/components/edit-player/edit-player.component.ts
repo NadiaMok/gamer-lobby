@@ -46,9 +46,10 @@ export class EditPlayerComponent implements OnInit {
   ) {
     const id = this.actRoute.snapshot.paramMap.get('id');
     this.playerApi.GetPlayer(id).subscribe(data => {
-      console.log(data);
-      console.log(data.rank);
-      console.log(data.status);
+      // console.log(data);
+      // console.log(data.rank);
+      // console.log(data.status);
+      console.log(data.gamesPlayed);
 
       this.playerForm = this.fb.group({
         player: [data.player, [Validators.required]],
@@ -56,7 +57,8 @@ export class EditPlayerComponent implements OnInit {
         score: [data.score, [Validators.required]],
         time: [data.time, [Validators.required]],
         status: [(String)(data.status), [Validators.required]],
-        favouriteGame: [(String)(data.favouriteGame), [Validators.required]]
+        favouriteGame: [(String)(data.favouriteGame), [Validators.required]],
+        gamesPlayed: [data.gamesPlayed]
       });
     });
   }
@@ -68,7 +70,8 @@ export class EditPlayerComponent implements OnInit {
       score: ['', [Validators.required]],
       time: ['', [Validators.required]],
       status: [true, [Validators.required]],
-      favouriteGame: ['', [Validators.required]]
+      favouriteGame: ['', [Validators.required]],
+      gamesPlayed: [this.playerApi.GetPlayer(this.actRoute.snapshot.paramMap.get('id'))]
     });
   }
 
@@ -78,11 +81,12 @@ export class EditPlayerComponent implements OnInit {
 
   updatePlayerForm() {
     console.log(this.playerForm.value);
+
     const id = this.actRoute.snapshot.paramMap.get('id');
     if (this.playerForm.valid) {
       if (window.confirm('Are you sure you want to update?')) {
         this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe(res => {
-          this.ngZone.run(() => this.router.navigateByUrl('/player-rankings'));
+          this.ngZone.run(() => this.router.navigateByUrl('/list-player'));
         });
       }
     }

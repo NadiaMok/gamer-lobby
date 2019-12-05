@@ -46,7 +46,7 @@ export class AddPlayerComponent implements OnInit {
   // add 'games played' as an empty array
   submitPlayerForm() {
     if (this.playerForm.valid) {
-      this.playerForm.patchValue({gamesPlayed: []});
+      this.playerForm.patchValue({gamesPlayed: new Array<string>(10)});
       this.playerApi.AddPlayer(this.playerForm.value).subscribe(res => {
         this.ngZone.run(() => this.router.navigateByUrl('/list-player'));
       });

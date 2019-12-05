@@ -65,15 +65,16 @@ export class JoinGameComponent implements OnInit {
 
   /* Update */
   updatePlayerForm() {
-    console.log('played: ' + this.playerForm.controls.gamesPlayed.value);
-    console.log('joined: ' + this.playerForm.controls.GAMES.value);
+    // console.log('played: ' + this.playerForm.controls.gamesPlayed.value);
+    // console.log('joined: ' + this.playerForm.controls.GAMES.value);
+    console.log('new: ' + (this.playerForm.controls.gamesPlayed.value).push(this.playerForm.controls.GAMES.value));
 
     const id = this.actRoute.snapshot.paramMap.get('id');
     if (this.playerForm.valid) {
       if (this.playerForm.controls.GAMES.value) {
-        this.playerForm.patchValue({status: false,
-                                    gamesPlayed: (this.playerForm.controls.gamesPlayed.value)
-                                      .push(this.playerForm.controls.GAMES.value)});
+      this.playerForm.patchValue({status: false});
+                                  // gamesPlayed: (this.playerForm.controls.gamesPlayed.value)
+                                  // .push(this.playerForm.controls.GAMES.value)});
       }
       this.playerApi.UpdatePlayer(id, this.playerForm.value).subscribe(res => this.router.navigateByUrl('/player-rankings'));
     }
